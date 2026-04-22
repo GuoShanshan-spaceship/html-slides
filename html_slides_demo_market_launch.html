@@ -1,0 +1,355 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>华北区域市场大开发启动会</title>
+  <style>
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", sans-serif;
+      background: #0f172a;
+      color: #e5e7eb;
+      overflow: hidden;
+    }
+    .deck {
+      width: 100vw;
+      height: 100vh;
+      position: relative;
+    }
+    .slide {
+      width: 100%;
+      height: 100%;
+      padding: 56px 72px;
+      position: absolute;
+      inset: 0;
+      display: none;
+      background: linear-gradient(135deg, #0f172a 0%, #111827 45%, #1e293b 100%);
+    }
+    .slide.active { display: block; }
+    .eyebrow {
+      color: #93c5fd;
+      font-size: 16px;
+      letter-spacing: 1px;
+      margin-bottom: 12px;
+    }
+    h1 {
+      font-size: 46px;
+      line-height: 1.15;
+      margin: 0 0 18px;
+      color: #f8fafc;
+    }
+    h2 {
+      font-size: 34px;
+      margin: 0 0 24px;
+      color: #f8fafc;
+    }
+    p, li {
+      font-size: 22px;
+      line-height: 1.7;
+      color: #d1d5db;
+    }
+    .muted { color: #94a3b8; }
+    .hero {
+      display: grid;
+      grid-template-columns: 1.2fr 0.8fr;
+      gap: 28px;
+      align-items: center;
+      height: calc(100vh - 112px);
+    }
+    .card {
+      background: rgba(255,255,255,0.06);
+      border: 1px solid rgba(255,255,255,0.08);
+      border-radius: 24px;
+      padding: 24px 28px;
+      backdrop-filter: blur(10px);
+      box-shadow: 0 12px 30px rgba(0,0,0,0.2);
+    }
+    .grid-2 {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 22px;
+      margin-top: 12px;
+    }
+    .grid-3 {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 18px;
+      margin-top: 18px;
+    }
+    .kpi {
+      padding: 22px;
+      border-radius: 22px;
+      background: rgba(59,130,246,0.12);
+      border: 1px solid rgba(96,165,250,0.24);
+    }
+    .kpi .num {
+      font-size: 38px;
+      font-weight: 700;
+      color: #f8fafc;
+      margin-bottom: 8px;
+    }
+    .kpi .label {
+      font-size: 18px;
+      color: #cbd5e1;
+      line-height: 1.5;
+    }
+    ul {
+      margin: 10px 0 0 0;
+      padding-left: 24px;
+    }
+    .org {
+      display: flex;
+      flex-direction: column;
+      gap: 24px;
+      margin-top: 24px;
+    }
+    .org-row {
+      display: flex;
+      justify-content: center;
+      gap: 18px;
+      flex-wrap: wrap;
+    }
+    .org-box {
+      min-width: 220px;
+      text-align: center;
+      padding: 18px 20px;
+      border-radius: 18px;
+      background: rgba(255,255,255,0.05);
+      border: 1px solid rgba(255,255,255,0.09);
+    }
+    .org-box strong {
+      display: block;
+      color: #f8fafc;
+      font-size: 22px;
+      margin-bottom: 8px;
+    }
+    .flow {
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      gap: 12px;
+      margin-top: 30px;
+      align-items: stretch;
+    }
+    .flow-step {
+      background: rgba(255,255,255,0.05);
+      border: 1px solid rgba(255,255,255,0.08);
+      border-radius: 18px;
+      padding: 18px;
+      min-height: 180px;
+    }
+    .flow-step .n {
+      font-size: 14px;
+      color: #93c5fd;
+      margin-bottom: 10px;
+    }
+    .flow-step h3 {
+      margin: 0 0 10px;
+      color: #f8fafc;
+      font-size: 22px;
+    }
+    .bottom-bar {
+      position: absolute;
+      left: 72px;
+      right: 72px;
+      bottom: 28px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      color: #94a3b8;
+      font-size: 15px;
+    }
+    .progress {
+      width: 180px;
+      height: 6px;
+      background: rgba(255,255,255,0.12);
+      border-radius: 999px;
+      overflow: hidden;
+    }
+    .progress > span {
+      display: block;
+      height: 100%;
+      width: 20%;
+      background: #60a5fa;
+      transition: width 0.25s ease;
+    }
+    .hint {
+      font-size: 16px;
+      color: #94a3b8;
+      margin-top: 14px;
+    }
+    @media (max-width: 1100px) {
+      .hero, .grid-2, .grid-3, .flow { grid-template-columns: 1fr; }
+      .slide { padding: 36px 28px; overflow-y: auto; }
+      h1 { font-size: 34px; }
+      h2 { font-size: 28px; }
+      p, li { font-size: 18px; }
+      .bottom-bar { left: 28px; right: 28px; }
+    }
+  </style>
+</head>
+<body>
+  <div class="deck">
+    <section class="slide active">
+      <div class="hero">
+        <div>
+          <div class="eyebrow">HTML Slides Demo</div>
+          <h1>华北区域市县域“市场大开发”<br>宣贯答疑暨启动会</h1>
+          <p>这是一个用 <strong>HTML + CSS + JavaScript</strong> 写的 slides 示例。和传统 PPT 相比，它更适合做统一风格、动态演示、在线分享和后续复用。</p>
+          <p class="muted">你可以按键盘 ← / → 切换页面。</p>
+        </div>
+        <div class="card">
+          <p style="margin-top:0;"><strong>这个版本能体现什么？</strong></p>
+          <ul>
+            <li>统一视觉风格，不用手工拖拽排版</li>
+            <li>结构清楚，适合方案宣贯类场景</li>
+            <li>后续可继续加动画、地图、图表、点击交互</li>
+          </ul>
+          <div class="hint">适合：方案宣讲、产品展示、方法论沉淀、线上分享</div>
+        </div>
+      </div>
+      <div class="bottom-bar"><span>01 / 05</span><div class="progress"><span style="width:20%"></span></div></div>
+    </section>
+
+    <section class="slide">
+      <div class="eyebrow">Page 2</div>
+      <h2>一、为什么要开展市场大开发</h2>
+      <div class="grid-2">
+        <div class="card">
+          <p><strong>外部导向</strong></p>
+          <ul>
+            <li>主动融入地方经济与能源发展大局</li>
+            <li>系统摸清区域资源、产业、客户与项目底数</li>
+            <li>围绕“十五五”提前谋划市场与项目储备</li>
+          </ul>
+        </div>
+        <div class="card">
+          <p><strong>内部导向</strong></p>
+          <ul>
+            <li>推动市场开发由点状突破转向体系化推进</li>
+            <li>形成区域联动、滚动开发、持续跟进机制</li>
+            <li>锻炼队伍，提高一线摸排和开发能力</li>
+          </ul>
+        </div>
+      </div>
+      <div class="grid-3">
+        <div class="kpi"><div class="num">摸清底数</div><div class="label">市县域画像、能源地图、客户档案一体化建立</div></div>
+        <div class="kpi"><div class="num">储备项目</div><div class="label">形成重点项目、潜力客户和政企联络清单</div></div>
+        <div class="kpi"><div class="num">锻炼队伍</div><div class="label">在实战中提升市场开发与协同攻坚能力</div></div>
+      </div>
+      <div class="bottom-bar"><span>02 / 05</span><div class="progress"><span style="width:40%"></span></div></div>
+    </section>
+
+    <section class="slide">
+      <div class="eyebrow">Page 3</div>
+      <h2>二、组织架构示意</h2>
+      <div class="org">
+        <div class="org-row">
+          <div class="org-box" style="min-width:320px;background:rgba(59,130,246,0.14);border-color:rgba(96,165,250,0.35)">
+            <strong>领导组</strong>
+            负责统筹部署、榜单审定、重点事项协调、结果审议
+          </div>
+        </div>
+        <div class="org-row">
+          <div class="org-box"><strong>综合组</strong>宣传、考核、监督、督办、汇总</div>
+          <div class="org-box"><strong>京津组</strong>区域开发推进与项目组织</div>
+          <div class="org-box"><strong>河北组</strong>区域开发推进与项目组织</div>
+          <div class="org-box"><strong>山东组</strong>区域开发推进与项目组织</div>
+          <div class="org-box"><strong>晋陕组</strong>区域开发推进与项目组织</div>
+        </div>
+        <div class="org-row">
+          <div class="org-box" style="min-width:780px;">
+            <strong>地推小组 / 责任团队</strong>
+            负责市场摸排、客户对接、项目推进、问题反馈、成果提报
+          </div>
+        </div>
+      </div>
+      <p class="hint">这种结构图用 HTML 写会很方便，后面也可以继续改成更正式的方框连线版。</p>
+      <div class="bottom-bar"><span>03 / 05</span><div class="progress"><span style="width:60%"></span></div></div>
+    </section>
+
+    <section class="slide">
+      <div class="eyebrow">Page 4</div>
+      <h2>三、揭榜挂帅机制流程</h2>
+      <div class="flow">
+        <div class="flow-step">
+          <div class="n">STEP 01</div>
+          <h3>提出榜单</h3>
+          <p>各工作组结合区域实际，提出样板市县、重点项目、精品站等榜单建议。</p>
+        </div>
+        <div class="flow-step">
+          <div class="n">STEP 02</div>
+          <h3>审定发布</h3>
+          <p>报领导组审定后发布，明确目标、责任、时限与评价口径。</p>
+        </div>
+        <div class="flow-step">
+          <div class="n">STEP 03</div>
+          <h3>揭榜承接</h3>
+          <p>由地推小组或责任团队揭榜，形成“一榜一专班、一榜一方案”。</p>
+        </div>
+        <div class="flow-step">
+          <div class="n">STEP 04</div>
+          <h3>推进落实</h3>
+          <p>按计划开展摸排、联络、对接、攻坚与阶段性成果提报。</p>
+        </div>
+        <div class="flow-step">
+          <div class="n">STEP 05</div>
+          <h3>评估应用</h3>
+          <p>纳入月度督办与考评晾晒，作为激励评优和后续调整依据。</p>
+        </div>
+      </div>
+      <div class="bottom-bar"><span>04 / 05</span><div class="progress"><span style="width:80%"></span></div></div>
+    </section>
+
+    <section class="slide">
+      <div class="eyebrow">Page 5</div>
+      <h2>四、HTML Slides 和 PPT 的直观区别</h2>
+      <div class="grid-2">
+        <div class="card">
+          <p><strong>更适合 HTML Slides 的情况</strong></p>
+          <ul>
+            <li>需要统一风格、快速批量改版</li>
+            <li>需要在线分享、网页展示、沉淀复用</li>
+            <li>需要做动态图表、交互或数据联动</li>
+          </ul>
+        </div>
+        <div class="card">
+          <p><strong>更适合传统 PPT 的情况</strong></p>
+          <ul>
+            <li>领导临时改稿很多</li>
+            <li>多人协作但不熟悉代码</li>
+            <li>最终仍需要按单位模板提交正式材料</li>
+          </ul>
+        </div>
+      </div>
+      <div class="card" style="margin-top:22px;">
+        <p style="margin:0;"><strong>对你来说：</strong>完全可以把 HTML slides 当成一个“展示原型工具”。先用它快速做结构和视觉，再决定是否导出成正式 PPT，是很实用的路线。</p>
+      </div>
+      <div class="bottom-bar"><span>05 / 05</span><div class="progress"><span style="width:100%"></span></div></div>
+    </section>
+  </div>
+
+  <script>
+    const slides = Array.from(document.querySelectorAll('.slide'));
+    let current = 0;
+
+    function showSlide(index) {
+      slides[current].classList.remove('active');
+      current = (index + slides.length) % slides.length;
+      slides[current].classList.add('active');
+    }
+
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'ArrowRight' || e.key === 'PageDown' || e.key === ' ') {
+        showSlide(current + 1);
+      }
+      if (e.key === 'ArrowLeft' || e.key === 'PageUp') {
+        showSlide(current - 1);
+      }
+    });
+
+    document.addEventListener('click', () => showSlide(current + 1));
+  </script>
+</body>
+</html>
